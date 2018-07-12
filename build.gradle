@@ -1,0 +1,32 @@
+
+plugins {
+    id 'java'
+    id "org.sonarqube" version "2.6.1"
+}
+
+group 'ch.emineo.demo'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+    testCompile 'org.junit.platform:junit-platform-runner:1.1.0'
+}
+
+
+ext {
+    sonarProjectName = 'Demo für DynamicTest Problem mit Junit und SonarQube'
+    sonarProjectKey = 'sonarqube-junit5-problem'
+}
+
+sonarqube {
+    properties {
+        property 'sonar.projectKey', sonarProjectKey
+        property 'sonar.projectName', sonarProjectName
+    }
+}
