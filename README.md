@@ -1,9 +1,10 @@
-# Demo for problem with sonarqube-gradle-plugin when used with JUnit5 Dynamic Tests #
+# Demo for problem with SonarQube Gradle Plugin 2.6.2 when used with JUnit5 Dynamic Tests #
 
 **Observed behaviour:**
 
 
-`gradlew sonarqube --stacktrace  --info -Dsonar.host.url=XXXX -Dsonar.login=XXXX -Dsonar.branch=master
+```
+gradlew sonarqube --stacktrace  --info -Dsonar.host.url=XXXX -Dsonar.login=XXXX -Dsonar.branch=master
 
 The client will now receive all logging from the daemon (pid: 6804). The daemon log file: C:\Users\leonhardt\.gradle\daemon\4.4\daemon-6804.out.log
 Starting 52nd build in daemon [uptime: 1 hrs 28 mins 14.341 secs, performance: 99%, no major garbage collections]
@@ -223,5 +224,17 @@ Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range:
 
 BUILD FAILED in 8s
 4 actionable tasks: 1 executed, 3 up-to-date
-String index out of range: -1`
+String index out of range: -1
+```
+
+The problem appears to be caused by the generated XML-file build/test-results/test/TEST-.29.xml
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name=")" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-07-12T13:52:50" hostname="NB099" time="0.005">
+  <properties/>
+  <testcase name="Test1(dynamicTest" classname=")" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
+```
 
