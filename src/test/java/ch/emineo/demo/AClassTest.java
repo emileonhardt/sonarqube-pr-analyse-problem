@@ -1,6 +1,7 @@
 package ch.emineo.demo;
 
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
@@ -14,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(JUnitPlatform.class)
 class AClassTest {
-  AClass objUnderTest = new AClass();
+  private AClass objUnderTest = new AClass();
 
   @Test
   void staticTest() throws Exception {
@@ -25,4 +26,11 @@ class AClassTest {
   Collection<DynamicTest> dynamicTest() throws Exception {
     return Collections.singletonList(DynamicTest.dynamicTest("Test1", () ->  assertEquals(5, objUnderTest.aMethod())));
   }
+
+  @DisplayName("dynamicTestWithDisplayName")
+  @TestFactory
+  Collection<DynamicTest> dynamicTestWithDisplayName() throws Exception {
+    return Collections.singletonList(DynamicTest.dynamicTest("Test1", () ->  assertEquals(5, objUnderTest.aMethod())));
+  }
+
 }
