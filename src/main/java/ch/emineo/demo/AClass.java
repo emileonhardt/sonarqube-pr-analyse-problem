@@ -9,6 +9,6 @@ public class AClass {
   private int aField = 5;
 
   public int aMethod() {
-    return aField;
+    return 5;
   }
 }
