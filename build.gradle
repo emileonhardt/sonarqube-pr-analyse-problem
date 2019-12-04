@@ -26,5 +26,9 @@ sonarqube {
         property "sonar.organization", "emileonhardt"
         property "sonar.host.url", "https://sonarcloud.io"
         property "sonar.login", "e516a15e6f0302db7961f8fe5184cf648090c687"
+
+        property "sonar.pullrequest.base", "master"
+        property "sonar.pullrequest.branch", "feature/a-pr"
+        property "sonar.pullrequest.key", "1"
     }
 }
