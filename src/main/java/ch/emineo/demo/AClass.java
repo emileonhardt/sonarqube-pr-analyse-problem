@@ -6,7 +6,9 @@ package ch.emineo.demo;/* Copyright */
  * @author leonhardt
  */
 public class AClass {
+  private int aField = 0;
+
   public int aMethod() {
-    return 5;
+    return aField;
   }
 }
